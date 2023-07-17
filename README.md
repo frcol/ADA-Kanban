@@ -42,4 +42,3 @@ Todas as variáveis estão sendo configuradas automaticamente pelo Docker Compos
 
 [//]: # (These are reference links) 
 [Paginacao]: <http://localhost:5000/cards?skip=10&take=50>
-# ADA-Kanban
