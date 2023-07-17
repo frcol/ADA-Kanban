@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using QuadroKanban.Data;
 using QuadroKanban.Data.DTO;
 using QuadroKanban.Model;
+using QuadroKanban.Services;
 
 namespace QuadroKanban.Controller;
 
@@ -13,60 +14,46 @@ namespace QuadroKanban.Controller;
 [ServiceFilter(typeof(ChangeLogFilter))]
 public class CardsController: ControllerBase
 {
-    private IMapper _mapper;
+    private CardService _service;
     private CardContext _context;
 
-    public CardsController(IMapper mapper, CardContext context)
+    public CardsController(CardService service, CardContext context)
     {
-        _mapper = mapper;
+        _service = service;
         _context = context;
     }
 
-    [HttpGet]
-    public IActionResult RecuperaCards([FromQuery] int skip = 0, [FromQuery] int take = int.MaxValue)
-    {
-        return Ok(_context.Cards.Skip(skip).Take(take));
-    }
-
-    [HttpGet("{id}")]
-    public IActionResult RecuperaCardsPorId(int id)
-    {
-        return Ok();
-    }
-
+    // ======================================================================
     [HttpPost]
     public IActionResult CadastraCard(CreateCardDto dto)
     {
-        Card card = _mapper.Map<Card>(dto);
-        _context.Cards.Add(card);
-        _context.SaveChanges();
-
-        return CreatedAtAction(nameof(RecuperaCardsPorId), new {id = card.Id}, card);
+        return _service.Cadastra(dto);
     }
 
+    
+    [HttpGet]
+    public IActionResult RecuperaCards([FromQuery] int skip = 0, [FromQuery] int take = int.MaxValue)
+    {
+        return _service.RecuperaCards(skip, take);
+    }
+
+    
+    [HttpGet("{id}")]
+    public IActionResult RecuperaCardsPorId(int id)
+    {
+        return _service.RecuperaCardPorId(id);
+    }
+
+    
     [HttpPut("{id}")]
     public IActionResult AlteraCard(int  id, [FromBody] UpdateCardDto dto)
     {
-        Card? card = _context.Cards.FirstOrDefault(card => card.Id == id);
-
-        if (card is null) { return NotFound(); }
-
-        _mapper.Map(dto, card);
-        _context.SaveChanges();
-
-        return Ok(card);
+        return _service.AlteraCard(id, dto);
     }
-
+    
     [HttpDelete("{id}")]
     public IActionResult DeleteCard(int id)
     {
-        Card? card = _context.Cards.FirstOrDefault(card => card.Id == id);
-
-        if (card is null) { return NotFound(); }
-
-        _context.Cards.Remove(card);
-        _context.SaveChanges();
-
-        return Ok(_context.Cards);
+        return _service.DeleteCard(id);
     }
 }

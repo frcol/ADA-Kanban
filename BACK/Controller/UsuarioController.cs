@@ -19,15 +19,6 @@ public class UsuarioController: ControllerBase
     [HttpPost]
     public async Task<IActionResult> CadastraUsuario(CreateUsuarioDto dto)
     {
-        IdentityResult resultado = await _usuarioService.CadastrarAsync(dto);
-
-        if (resultado.Succeeded)
-        {
-            return Ok("Cadastro realizado com sucesso!");
-        }
-        else
-        {
-            return NoContent();
-        }
+        return await _usuarioService.CadastrarAsync(dto);      
     }
 }

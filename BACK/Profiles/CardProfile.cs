@@ -10,5 +10,6 @@ public class CardProfile: Profile
     {
         CreateMap<CreateCardDto, Card>();
         CreateMap<UpdateCardDto, Card>();
+        CreateMap<Card, ReadCardDto>();
     }
 }

@@ -11,7 +11,7 @@ Rodar Docker Composer no Root do projeto para gerar:
 docker compose up -d 
 ```
 ### Autenticação
-Estou utilizando **Identity.EntityFrameworkCore** para validar o usuario e senha<br>
+Estou utilizando **Identity.EntityFrameworkCore** para validar o usuario e senha (com Mapeamento, Profile)<br>
 No migration está sendo inserido o usuário de teste (letscode)
 
 ### Migration

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebSockets;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MySqlConnector;
@@ -62,6 +63,7 @@ builder.Services
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Custom Services
+builder.Services.AddScoped<CardService>();
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<ChangeLogFilter>();

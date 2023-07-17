@@ -6,9 +6,9 @@ namespace QuadroKanban.Data.DTO;
 public class CreateCardDto
 {
     [Required]
-    public string Titulo { get; set; }
+    public string? Titulo { get; set; }
     [Required]
-    public string conteudo { get; set; }
+    public string? conteudo { get; set; }
     [Required]
-    public string lista { get; set; }
+    public string? lista { get; set; }
 }

@@ -5,8 +5,8 @@ namespace QuadroKanban.Data.DTO;
 public class LoginUsuarioDto
 {
     [Required]
-    public string Login { get; set; }
+    public string? Login { get; set; }
 
     [Required]
-    public string Senha { get; set; }
+    public string? Senha { get; set; }
 }

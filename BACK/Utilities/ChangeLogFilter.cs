@@ -6,7 +6,7 @@ public class ChangeLogFilter : IActionFilter
 {
     private CardContext _contextCard;
     private int _id;
-    private Card _card;
+    private Card? _card;
 
     public ChangeLogFilter(CardContext contextCard)
     {
@@ -18,7 +18,7 @@ public class ChangeLogFilter : IActionFilter
         if (context.HttpContext.Request.Method == "PUT" || context.HttpContext.Request.Method == "DELETE")
         {
             _id = Convert.ToInt16(context.RouteData.Values["id"]);
-            _card = _contextCard.Cards.FirstOrDefault(card => card.Id == _id);
+            _card = _contextCard.Cards?.FirstOrDefault(card => card.Id == _id);
         }
     }
 

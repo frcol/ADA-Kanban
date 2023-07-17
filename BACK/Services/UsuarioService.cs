@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using QuadroKanban.Controller;
 using QuadroKanban.Data.DTO;
 using QuadroKanban.Model;
@@ -21,12 +22,19 @@ public class UsuarioService
         _tokenService = tokenService;
     }
 
-    public async Task<IdentityResult> CadastrarAsync(CreateUsuarioDto dto)
+    public async Task<IActionResult> CadastrarAsync(CreateUsuarioDto dto)
     {
         Usuario usuario = _mapper.Map<Usuario>(dto);
         IdentityResult resultado = await _userManager.CreateAsync(usuario, dto.Senha);
 
-        return resultado;
+        if (resultado.Succeeded)
+        {
+            return new OkObjectResult("Cadastro realizado com sucesso!");
+        }
+        else
+        {
+            return new NoContentResult();
+        }
     }
 
     public async Task<string> LoginAsync(LoginUsuarioDto dto)
