@@ -1,26 +1,33 @@
+# ADA - KANBAN
+#### DB Configurar _InMemory_ ou MySQL local
+Em **Program.cs** existe uma variável booleana _"inMemoryDatabase"_. Se true, a aplicação usará InMemoryDatabase.
 
-# DB Configurar InMemory ou MySQL local
-Em Program.cs existe uma variável booleana "inMemoryDatabase". Se true, a aplicação usará InMemoryDatabase.
-
-# Docker
-Rodar docker para gerar Container MySQL, Container webapi .NET e Container React
+### Docker
+Rodar Docker Composer no Root do projeto para gerar: 
+- Container MySQL, 
+- Container webapi .NET e 
+- Container React
+```sh
 docker compose up -d 
+```
+### Autenticação
+Estou utilizando **Identity.EntityFrameworkCore** para validar o usuario e senha
+No mitragion está sendo inserido o usuário de teste (letscode)
 
-# Autenticação
-Estou utiliziando Identity.EntityFrameworkCore para validar o usuario e senha
-No mitration está sendo inserido o usuario de teste (letscode)
-
-# Migration
+### Migration
+Rodar Migration para gerar o Banco, tabelas e inserir usuário demo:
+`Tools -> NuGet Package Manager -> Package Manager Console`
+```sh
 Update-Database -Context UsuarioContext
 Update-Database -Context CardContext
+```
+###  Listagem de Cards
+Estou usando paginação (Skip/take). Por pardão ele irá retornar todo conteúdo.
+Ex: http://localhost:5000/cards?skip=10&take=50 (Não vai fucnionar,pois precisa do Token)
 
-# Listagem de Cards
-Estou usando paginação (Skip/take). Por Default retorna tudo.
-ex http://localhost:5000/cards?skip=10&take=50
-
-# Variaveis de ambientes
-Arquivo appsettings.json
-
+###  Variáveis de ambientes
+Arquivo **appsettings.json**
+```sh
 "AppSettings": {
     "TokenKey": "0nwau0rmiUjdskjd9jdIOjdlNLKD7D*&Daewur293749283sdhf"
   },
@@ -28,6 +35,10 @@ Arquivo appsettings.json
   "MYSQL_DB": "kanban",
   "MYSQL_USER": "root",
   "MYSQL_PASSWORD": "12345678"
+```
+Todas as variáveis estão sendo configuradas automaticamente pelo Docker Composer.
 
-Mas todas as variaveis estão sendo configuradas automaticamente pelo Docker.
+`Fábio Colombini`
 
+[//]: # (These are reference links) 
+[Paginacao]: <http://localhost:5000/cards?skip=10&take=50>
