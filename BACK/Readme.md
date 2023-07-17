@@ -11,19 +11,19 @@ Rodar Docker Composer no Root do projeto para gerar:
 docker compose up -d 
 ```
 ### Autenticação
-Estou utilizando **Identity.EntityFrameworkCore** para validar o usuario e senha
+Estou utilizando **Identity.EntityFrameworkCore** para validar o usuario e senha<br>
 No migration está sendo inserido o usuário de teste (letscode)
 
 ### Migration
-Rodar Migration para gerar o Banco, tabelas e inserir usuário demo:
+Rodar Migration para gerar o Banco, tabelas e inserir usuário demo:<br>
 `Tools -> NuGet Package Manager -> Package Manager Console`
 ```sh
 Update-Database -Context UsuarioContext
 Update-Database -Context CardContext
 ```
 ###  Listagem de Cards
-Estou usando paginação (Skip/take). Por pardão ele irá retornar todo conteúdo.
-Ex: http://localhost:5000/cards?skip=10&take=50 (Não vai fucnionar,pois precisa do Token)
+Estou usando paginação (Skip/take). Por pardão ele irá retornar todo conteúdo.<br>
+Ex: http://localhost:5000/cards?skip=10&take=50 (Não vai funcionar, pois precisa do Token)
 
 ###  Variáveis de ambientes
 Arquivo **appsettings.json**
