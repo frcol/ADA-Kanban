@@ -15,7 +15,8 @@ Estou utilizando **Identity.EntityFrameworkCore** para validar o usuario e senha
 No migration está sendo inserido o usuário de teste (letscode)
 
 ### Migration
-Rodar Migration para gerar o Banco, tabelas e inserir usuário demo:<br>
+Rodar Migration para gerar o Banco, tabelas e inserir usuário demo.<br>
+Precisa configurar as variáveis de ambiente (appsettings.json) 
 `Tools -> NuGet Package Manager -> Package Manager Console`
 ```sh
 Update-Database -Context UsuarioContext
