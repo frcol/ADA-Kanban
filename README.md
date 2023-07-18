@@ -1,4 +1,4 @@
-# ADA - KANBAN (Backend)
+# ADA - KANBAN
 #### DB Configurar _InMemory_ ou MySQL local
 Em **Program.cs** existe uma variável booleana _"inMemoryDatabase"_. Se true, a aplicação usará InMemoryDatabase.
 
@@ -11,7 +11,7 @@ Rodar Docker Composer no Root do projeto para gerar:
 docker compose up -d 
 ```
 ### Autenticação
-Estou utilizando **Identity.EntityFrameworkCore** para validar o usuario e senha<br>
+Estou utilizando **Identity.EntityFrameworkCore** para validar o usuario e senha (com Mapeamento, Profile)<br>
 No migration está sendo inserido o usuário de teste (letscode)
 
 ### Migration
@@ -42,3 +42,8 @@ Todas as variáveis estão sendo configuradas automaticamente pelo Docker Compos
 
 [//]: # (These are reference links) 
 [Paginacao]: <http://localhost:5000/cards?skip=10&take=50>
+
+###  Linter
+Utilizando Roslynator como ferramenta de análise estática de código para o C#.
+Ex: Não permitir deixar 2 linhas em branco
+rcs1036: Avoid multiple Blank Lines
