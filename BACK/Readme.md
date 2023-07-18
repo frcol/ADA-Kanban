@@ -2,7 +2,7 @@
 #### DB Configurar _InMemory_ ou MySQL local
 Em **Program.cs** existe uma variável booleana _"inMemoryDatabase"_.<br> 
 Se true, a aplicação usará InMemoryDatabase.<br>
-(Mas o Back foi criado para usar MySQL, então pode deixar true mesmo :)
+(Mas o Back foi criado para usar MySQL, então pode deixar **false** mesmo :)
 
 ### Docker
 Rodar Docker Composer no Root do projeto para gerar: 
@@ -40,8 +40,8 @@ Arquivo **appsettings.json**
 Todas as variáveis estão sendo configuradas automaticamente pelo Docker Composer.
 
 ###  Linter
-Utilizando Roslynator como ferramenta de análise estática de código para o C#.
-Ex: Não permitir deixar 2 linhas em branco
+Utilizando Roslynator como ferramenta de análise estática de código para o C#.<br>
+Ex: Não permitir deixar 2 linhas em branco<br>
 `rcs1036: Avoid multiple Blank Lines`
 
 `Fábio Colombini`
